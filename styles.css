@@ -1,0 +1,9 @@
+.slab {
+    color:black;
+    border: 1px dashed white;
+    height: 50px;
+    width: 200px;
+    background: black;
+    position: absolute;
+    top: 0;
+}

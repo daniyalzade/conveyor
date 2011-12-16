@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="styles.css" rel="stylesheet" type="text/css"/> 
+    <script>
+      $(document).ready(function() {
+        // Handler for .ready() called.
+        var count = 0;
+        var init = function(){
+          var top = 0;
+          //var delta = parseInt($("<div class='slab'></div>").css('height'))
+          var delta = 50;
+          for(var i=0; i<10; i++) {
+            var div = $("<div class='slab'></div>")
+            div.css('top', top)
+            $(".conveyor").append(div)
+            top += delta;
+          }
+        }
+        var updatePositions = function(){
+          count += 1;
+          $('.slab').each(function(idx, el) {
+            var el = $(el);
+            curY = parseInt(el.css('top'));
+            el.css('top', curY + 10);
+          });
+          if (count % 5 == 1) {
+            var div = $("<div class='slab'></div>")
+            div.css('top', -40)
+            $(".conveyor").prepend(div)
+          }
+        }
+        init();
+        var timer = setInterval(updatePositions, 1000);
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div class='conveyor'>
+    </div>
+  </body>
+</html>
